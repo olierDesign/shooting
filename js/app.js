@@ -37,6 +37,11 @@ var GAME = {
   },
   play: function() {
     this.setStatus('playing');
+
+    var CONFIG = window.CONFIG;
+    var Engine = window.Engine;
+    var engine = new Engine(CONFIG);
+    engine.start();
   }
 };
 
