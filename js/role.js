@@ -38,6 +38,7 @@ Plane.prototype.constructor = Plane;
   */
 function Enemy(opt) {
 	Role.call(this, opt);
+	this.status = opt.status;
 }
 Enemy.prototype = Object.create(Role.prototype);
 Enemy.prototype.constructor = Enemy;
@@ -46,8 +47,9 @@ Enemy.prototype.constructor = Enemy;
   * 敌人容器
   */
 function EnemyCtn(arr) {
-	this.boundaryLeft = arr[0].x;
-	this.boundaryLeft = arr[length - 1].x + arr[length - 1].width;
+	this.childrenArr = arr ? arr : [];
+	this.boundaryLeft = arr ? arr[0].x : 0;
+	this.boundaryRight = arr ? arr[arr.length - 1].x + arr[arr.length - 1].width : 0;
 }
 
 
@@ -67,4 +69,5 @@ Bullet.prototype.constructor = Bullet;
 var Engine = window.Engine;
 Engine.Plane = Plane;
 Engine.Enemy = Enemy;
+Engine.EnemyCtn = EnemyCtn;
 Engine.Bullet = Bullet;
